@@ -1,5 +1,5 @@
 {
-  "name": "game-of-life-pattern-downloader",
+  "name": "game-of-life-patterns-api",
   "version": "0.0.0",
   "private": true,
   "scripts": {
