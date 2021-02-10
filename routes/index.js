@@ -16,20 +16,17 @@ const getData = async (id) => {
 const convertToArray = (arr) => {
   // Get number of columns by taking the maximum row length.
   let cols = arr.reduce(((acc, val) => (val.length > acc) ? val.length : acc), 0);
-  return arr.map(row =>[
+  return arr.map(row => [
     ...row.split('').map(cell => (cell === 'O') ? 1 : 0),  // Convert . to 0 and O to 1.
     ...Array(cols - row.length).fill(0)                    // Fill remaining cells with 0s.
   ]);
 }
 
 router.get('/:id', async (req, res, next) => {
-
   let data = await getData(req.params.id);
-
   if (!data) {
-    return res.status(400).json({ result: 'An error has occured :(' });
+    return res.status(400).json({ result: 'Structure does not exist.' });
   }
-
   return res.status(200).json({
     result:
       convertToArray(
